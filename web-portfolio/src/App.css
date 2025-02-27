@@ -11,7 +11,22 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  /* margin-top: 5vh; */
+  /* margin-top: 1em; */
   /* color: white; */
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  /* height: 5vh; */
+  background-color: grey;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
 }
 
 @keyframes gradient-animation {
@@ -26,23 +41,143 @@
   }
 }
 
-.home {
+.home, .certifications, .contact {
   background-color: white;
-  height: 90vh;
-  width: 50vw;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
-.about-btn {
-  width: 50%;
+.projects {
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  /* margin-left: 10em;
+  margin-right: auto; */
+  /* display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center; */
+}
+
+/* After I commented out the width; now the button
+appears bigger when selected (might be a good idea for later)
+ */
+.btn {
+  /* width: 20vw; */
+  background-color: transparent;
+  border: 1px solid blue;
+  border-radius: 0.5em;
+  margin: 0.4em;
+  padding: 0.5em;
+  font-size: 0.75em;
+  transition: background-color 0.2s ease;
+  box-shadow: black 2px 1px 1px 0.75;
+}
+
+.btn:hover {
+  background-color: aliceblue;
+  cursor: pointer;
+}
+
+.btn-active {
+  width: 20vw;
+  /* background-color: transparent; */
+  background-color: aliceblue;
+  border: 1px solid blue;
+  border-radius: 0.5em;
+  margin: 0.4em;
+  padding: 0.5em;
+  /* font-weight: bold; */
+  font-size: 0.75em;
+  /* transition: background-color 0.2s ease; */
+  box-shadow: black 2px 1px 1px 0.75;
+  /* display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; */
   /* background-color: grey; */
 }
 
-.about {
-  background-color: grey;
-  height: 90vh;
-  width: 50vw;
+.projects-grid {
+  /* margin-top: auto; */
+  /* border: 1px solid black; */
+  margin-top: 4em;
+  /* margin-left: 10vw;
+  margin-right: 10vw; */
+  /* padding: 0; */
+  display: grid;
+  grid-template-columns: repeat(3, minmax(8em, 1fr));
+  /* grid-template-rows: minmax(8em, 1fr); */
+  grid-auto-rows: minmax(8em, 1fr);
+  gap: 1em;
+  /* grid-auto-flow: dense; */
+  /* align-items: stretch; */
+  /* position: relative; */
 }
+
+.projects-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  transition: all 0.3s ease;
+  /* content: inherit; */
+  /* word-wrap: break-word; */
+  overflow-wrap: anywhere;
+  font-weight: bold;
+  min-width: 10vw;
+}
+
+.projects-item:hover {
+  transform: scale(1.1);
+  /* transform: translateY(-0.5em); */
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.projects-item-expanded {
+  display: flex;
+  grid-column: span 3;
+  grid-row: span 2;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  transition: all 0.3s ease;
+  overflow-wrap: anywhere;
+  font-weight: bold;
+}
+
+.item-container {
+  /* border: 1px solid black; */
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Might need to mess with button re-sizing */
+.item-exit-btn {
+  background: none;
+  border: 1px solid black;
+  border-radius: 1em;
+  font-weight: bold;
+  padding: 10px;
+  margin: 0.5em;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}
+
+/* .item-label */
