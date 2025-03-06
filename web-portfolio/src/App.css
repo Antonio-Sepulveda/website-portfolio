@@ -41,7 +41,7 @@ nav {
   }
 }
 
-.home, .certifications, .contact {
+.home, .contact {
   background-color: white;
   height: 100vh;
   width: 100vw;
@@ -108,21 +108,16 @@ appears bigger when selected (might be a good idea for later)
   /* background-color: grey; */
 }
 
+/* Fix the grid when the screen is smaller */
+/* Try and make it more dynamic???? Better feel when it expands */
 .projects-grid {
-  /* margin-top: auto; */
-  /* border: 1px solid black; */
   margin-top: 4em;
-  /* margin-left: 10vw;
-  margin-right: 10vw; */
-  /* padding: 0; */
   display: grid;
   grid-template-columns: repeat(3, minmax(8em, 1fr));
-  /* grid-template-rows: minmax(8em, 1fr); */
-  grid-auto-rows: minmax(8em, 1fr);
+  /* grid-auto-rows: minmax(8em, 1fr); */
+  grid-auto-rows: minmax(8em, auto);
+  grid-auto-flow: row dense;
   gap: 1em;
-  /* grid-auto-flow: dense; */
-  /* align-items: stretch; */
-  /* position: relative; */
 }
 
 .projects-item {
@@ -148,7 +143,7 @@ appears bigger when selected (might be a good idea for later)
 
 .projects-item-expanded {
   display: flex;
-  grid-column: span 3;
+  grid-column: span 2;
   grid-row: span 2;
   flex-direction: column;
   justify-content: center;
@@ -157,6 +152,9 @@ appears bigger when selected (might be a good idea for later)
   transition: all 0.3s ease;
   overflow-wrap: anywhere;
   font-weight: bold;
+  padding: 0.5em;
+  /* min-width: ; */
+
 }
 
 .item-container {
@@ -174,10 +172,58 @@ appears bigger when selected (might be a good idea for later)
   border-radius: 1em;
   font-weight: bold;
   padding: 10px;
-  margin: 0.5em;
+  /* margin: 0.5em; */
   position: absolute;
   right: 0;
   cursor: pointer;
 }
 
-/* .item-label */
+.item-content {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.item-img {
+  max-width: 10em;
+  /* display: flex; */
+  /* height: 100%; */
+}
+
+.item-rest {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+  text-align: center;
+  white-space: pre-line;
+}
+
+.item-description {
+  font-weight: normal;
+  /* font-size: smaller; */
+  
+}
+
+.item-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.certifications {
+  /* background-color: white;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center; */
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2.5em;
+}

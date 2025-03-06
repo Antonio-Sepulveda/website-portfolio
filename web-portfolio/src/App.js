@@ -1,16 +1,52 @@
 import './App.css';
 import { useState } from 'react';
+import projectXimg from './images/placeholder.png';
 
+// ✔Idea: Make "nav" its own Component
+// ✔Idea: Highlight the currently selected Tab
 // Idea: Make the "Nav Buttons" into a dropdown menu (when the screen gets small enoough)
-const projectsInfoTemp = {
-  index: "id/index number of the project",
-  name: "title of project",
-  img: "img",
-  desc: "brief description of the project",
-  github: "takes you to the github link",
-  link: "takes you to the website",
-  status: "Status"
-}
+const projectsInfoTemp = [
+  {index: 0,
+    name: "Mission Field UI",
+    // img: './images/placeholder.png',
+    img: projectXimg,
+    desc: "-app intended to help organize data for Brazilian missionaries "+
+    "\n-connects with AI API to automatically assign different categories of interest to the client",
+    github: "github",
+    link: "link",
+    status: "Completed/In Progress"},
+  {index: 1,
+    name: "ADHD Habit Tracker",
+    img: projectXimg,
+    desc: "PLACEHOLDER FOR ACCURACY app intended to help organize data for Brazilian missionaries "+
+    "\n-connects with AI API to automatically assign different categories of interest to the client",
+    github: "takes you to the github link",
+    link: "takes you to the website",
+    status: "Status"},
+  {index: 2,
+    name: "Mobile Mouse",
+    img: projectXimg,
+    desc: "PLACEHOLDER FOR ACCURACY app intended to help organize data for Brazilian missionaries "+
+    "\n-connects with AI API to automatically assign different categories of interest to the client",
+    github: "takes you to the github link",
+    link: "takes you to the website",
+    status: "Status"},
+  {index: 3,
+    name: "Man w/ a Stick",
+    img: projectXimg,
+    desc: "PLACEHOLDER FOR ACCURACY app intended to help organize data for Brazilian missionaries "+
+    "\n-connects with AI API to automatically assign different categories of interest to the client",
+    github: "takes you to the github link",
+    link: "takes you to the website",
+    status: "Status"},
+  {index: 4,
+    name: "title of project",
+    img: "img",
+    desc: "brief description of the project",
+    github: "takes you to the github link",
+    link: "takes you to the website",
+    status: "Status"},
+]
 
 const NavBar = ({setContent, active}) => {
   return (
@@ -46,10 +82,12 @@ const Home = ({setContent, active}) => {
     <div className="home">
       <NavBar setContent={setContent} active={active}></NavBar>
       <h1>Antonio Sepulveda</h1>
-      <p>Description Here (maybe make this an about page and lead with the projects on the main page??</p>
-      <p>Skills???</p>
-      <p>✔Idea: Make "nav" its own Component</p>
-      <p>✔Idea: Highlight the currently selected Tab</p>
+      <p style={{maxWidth: '75vw'}}>Hello, I am a software engineer with expertise in web development and design. 
+        I focus on creating practical, impactful applications that address real-world needs. 
+        I am passionate about building tools that enhance user experiences and contribute to positive change.
+      </p>
+      <h3>Skills</h3>
+      <p>JS, HTML, CSS, Python, blah blah etc</p>
     </div>
   )
 }
@@ -79,15 +117,21 @@ const Projects = ({setContent, active}) => {
           onClick={() => toggleProject(index, "close")}>X
         </button>
         {label}
-        <div>
-          {/* <p>{projectsInfoTemp.index}</p>  */}
+        <div className="item-content">
+          {/* <p>{projectsInfoTemp[index].index}</p>  */}
         {/* Index will be used to find right info */}
           {/* <p>{projectsInfoTemp.name}</p> */}
-          <p>{projectsInfoTemp.img}</p>
-          <p>{projectsInfoTemp.desc}</p>
-          <p>{projectsInfoTemp.github}</p>
-          <p>{projectsInfoTemp.link}</p>
-          <p>{projectsInfoTemp.status}</p>
+          <div className="item-img-container">
+            <img src={projectsInfoTemp[index].img} className="item-img"></img>
+          </div>
+          <div className="item-rest">
+            <p className="item-description">{projectsInfoTemp[index].desc}</p>
+            <div className="item-links">
+              <button>{projectsInfoTemp[index].github}</button>
+              <button>{projectsInfoTemp[index].link}</button>
+            </div>
+            <p>{projectsInfoTemp[index].status}</p>
+          </div>
         </div>
       </div> : label}
     </div>
@@ -99,9 +143,9 @@ const Projects = ({setContent, active}) => {
       {/* <p>You are in the Projects Component</p> */}
       <div className='projects-grid'>
         {renderProjectItem(0, "Mission Field UI")}
-        {renderProjectItem(1, "Project 2")}
-        {renderProjectItem(2, "Project 3")}
-        {renderProjectItem(3, "Project 4")}
+        {renderProjectItem(1, "ADHD Habit Tracker")}
+        {renderProjectItem(2, "Mobile Mouse")}
+        {renderProjectItem(3, "Man w/ a Stick")}
         {renderProjectItem(4, "Project 5")}
       </div>
     </div>
@@ -112,7 +156,8 @@ const Certifications = ({setContent, active}) => {
   return (
     <div className="certifications">
       <NavBar setContent={setContent} active={active}></NavBar>
-      <p>You are in the Certifications Component</p>
+      <h1>Code Academy</h1>
+      <h1>OpenAvenue</h1>
       {/* <p>Test</p> */}
     </div>
   )
@@ -122,13 +167,12 @@ const Contact = ({setContent, active}) => {
   return (
     <div className="contact">
       <NavBar setContent={setContent} active={active}></NavBar>
-      <p>Contact Icons Go Here</p>
+      <p>Other Forms of Contact:</p>
       <ul>
         <li>Phone Number</li>
         <li>Email</li>
         <li>GitHub</li>
         <li>LinkedIN</li>
-        <li>Link to Resume</li>
       </ul>
       {/* <p>Test</p> */}
     </div>
