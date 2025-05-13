@@ -72,28 +72,72 @@ const projectsInfoTemp = [
 ]
 
 const NavBar = ({setContent, active}) => {
+  console.log(active);
   return (
     <nav>
-      {active === "Home" ? 
-        <button className="btn-active">Home</button> :
-        <button onClick={() => setContent("Home")}
-        className="btn">Home</button>
-      }
-      {active === "Projects" ? 
-        <button className="btn-active">Projects</button> :
-        <button onClick={() => setContent("Projects")}
-        className="btn">Projects</button>
+      {/* Home Nav Button */}
+      <button onClick={() => {
+          setContent("Home")
+          document.getElementById("home-id")?.scrollIntoView();
+        }}
+        className={active === "Home" ? "btn-active" : "btn"}>
+          <span className="btn-text">Home</span>
+      </button>
+
+      {/* Projects Nav Button */}
+      <button onClick={() => {
+          setContent("Projects")
+          document.getElementById("projects-id")?.scrollIntoView();
+        }}
+        className={active === "Projects" ? "btn-active" : "btn"}>
+          <span className="btn-text">Projects</span>
+      </button>
+      
+      {/* Certifications Nav Button */}
+      <button onClick={() => {
+          setContent("Certifications")
+          document.getElementById("certifications-id")?.scrollIntoView();
+        }}
+        className={active === "Certifications" ? "btn-active" : "btn"}>
+          <span className="btn-text">Certifications</span>
+      </button>
+
+      {/* Contact Nav Button */}
+      <button onClick={() => {
+          setContent("Contact")
+          document.getElementById("contact-id")?.scrollIntoView();
+        }}
+        className={active === "Contact" ? "btn-active" : "btn"}>
+          <span className="btn-text">Contact</span>
+      </button>
+      
+      {/* {active === "Projects" ? 
+        <button className="btn-active">
+          <a className="btn-text" href="#projects-id">Projects</a>
+        </button> :
+        <button onClick={() => {setContent("Projects")}}
+        className="btn">
+          <a className="btn-text" href="#projects-id">Projects</a>
+        </button>
       }
       {active === "Certifications" ? 
-        <button className="btn-active">Certifications</button> :
-        <button onClick={() => setContent("Certifications")}
-        className="btn">Certifications</button>
+        <button className="btn-active">
+          <a className="btn-text" href="#certifications-id">Certifications</a>
+        </button> :
+        <button onClick={() => {setContent("Certifications")}}
+        className="btn">
+          <a className="btn-text" href="#certifications-id">Certifications</a>
+        </button>
       }
       {active === "Contact" ? 
-        <button className="btn-active">Contact</button> :
-        <button onClick={() => setContent("Contact")}
-        className="btn">Contact</button>
-      }  
+        <button className="btn-active">
+          <a className="btn-text" href="#contact-id">Contact</a>
+        </button> :
+        <button onClick={() => {setContent("Contact")}}
+        className="btn">
+          <a className="btn-text" href="#contact-id">Contact</a>
+        </button>
+      }   */}
       <button onClick={() => alert("This takes you the resume")}
         className="btn">Resume</button>
     </nav>
@@ -115,8 +159,10 @@ const Home = ({setContent, active}) => {
 
   return (
     <div className="home">
-      <NavBar setContent={setContent} active={active}></NavBar>
-      <h1 style={{margin: 0}}>Antonio Sepulveda</h1>
+      {/* <h1 style={{margin: 0}}>Antonio Sepulveda</h1> */}
+      <section id="home-id">
+        <h1 style={{margin: 0}}>Antonio Sepulveda</h1>
+      </section>
       <h4 style={{margin: 0, paddingBottom: '1em'}}>Software Engineer</h4>
       <p style={{maxWidth: '75vw', margin: 0, fontSize: '1em'}}>Hello, I am a software engineer with expertise in web development and design. 
         I focus on creating practical, impactful applications that address real-world needs. 
@@ -198,7 +244,11 @@ const Projects = ({setContent, active}) => {
 
   return (
     <div className="projects">
-      <NavBar setContent={setContent} active={active}></NavBar>
+      {/* <h1>Projects</h1> */}
+      <section id="projects-id">
+        <h1>Projects</h1>
+      </section>
+      {/* <NavBar setContent={setContent} active={active}></NavBar> */}
       {/* <p>You are in the Projects Component</p> */}
       <div className='projects-grid' ref={projectsGridRef}>
         {renderProjectItem(0, "Mission Field UI")}
@@ -214,10 +264,13 @@ const Projects = ({setContent, active}) => {
 const Certifications = ({setContent, active}) => {
   return (
     <div className="certifications">
-      <NavBar setContent={setContent} active={active}></NavBar>
-      <h1>OpenAvenue</h1>
-      <h1>freeCodeCamp</h1>
-      <h1>Saylor Academy</h1>
+      {/* <h1>Certifications</h1> */}
+      <section id="certifications-id">
+        <h1>Certifications</h1>
+      </section>
+      <h2>OpenAvenue</h2>
+      <h2>freeCodeCamp</h2>
+      <h2>Saylor Academy</h2>
       <p>In Progress...</p>
       {/* <p>Test</p> */}
     </div>
@@ -227,7 +280,9 @@ const Certifications = ({setContent, active}) => {
 const Contact = ({setContent, active}) => {
   return (
     <div className="contact">
-      <NavBar setContent={setContent} active={active}></NavBar>
+      <section id="contact-id">
+        <h1>Contact</h1>
+      </section>
       <p>Other Forms of Contact:</p>
       <ul>
         <li>Phone Number</li>
@@ -242,26 +297,34 @@ const Contact = ({setContent, active}) => {
 
 function App() {
   const [content, setContent] = useState("Home");
-  // const [active, setActive] = useState("Home");
   
-  let display;
-  if (content === "Home") {
-    display = <Home setContent={setContent} active={"Home"}/>;
-  }
-  else if (content === "Projects") {
-    display = <Projects setContent={setContent} active={"Projects"}/>;
-  }
-  else if (content === "Certifications") {
-    display = <Certifications setContent={setContent} active={"Certifications"}/>;
-  }
-  else if (content === "Contact") {
-    display = <Contact setContent={setContent} active={"Contact"}/>;
-  }
+  // let display;
+  // if (content === "Home") {
+  //   display = <Home setContent={setContent} active={"Home"}/>;
+  // }
+  // else if (content === "Projects") {
+  //   display = <Projects setContent={setContent} active={"Projects"}/>;
+  // }
+  // else if (content === "Certifications") {
+  //   display = <Certifications setContent={setContent} active={"Certifications"}/>;
+  // }
+  // else if (content === "Contact") {
+  //   display = <Contact setContent={setContent} active={"Contact"}/>;
+  // }
 
   return (
     <div className="gradient-background">
       <header className="App-header">
-        {display}
+        {/* {display} */}
+        <NavBar setContent={setContent} active={content}></NavBar>
+        {/* <Home setContent={setContent} active={"Home"}/>
+        <Projects setContent={setContent} active={"Projects"}/>
+        <Certifications setContent={setContent} active={"Certifications"}/>
+        <Contact setContent={setContent} active={"Contact"}/> */}
+        <Home/>
+        <Projects/>
+        <Certifications/>
+        <Contact/>
       </header>
     </div>
   );
