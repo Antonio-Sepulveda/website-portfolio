@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { AiFillMail } from "react-icons/ai";
 import { AiFillPhone } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineLink } from "react-icons/ai";
 
 // Contact Images
 import github from './images/contact-images/github.png';
@@ -37,26 +38,17 @@ import UnityLogo from './images/skill-logos/Unity-logo.png';
 // ✔Idea: Make "nav" its own Component
 // ✔Idea: Highlight the currently selected Tab
 // ✔Idea: Make the Projects Grid turn into one/two columns when the screen is small enough
-// ✔Task0: Custom Scrolling CSS
-// ✔️Task1: Finish Projects Outline
-// ✔️Task2: Get Certifications Working
-// ✔️Task3: Contact Form
+// ✔Task0: Custom Scrolling CSS (REMOVED)
+// ✔Task1: Finish Projects Outline
+// ✔Task2: Get Certifications Working
+// ✔Task3: Contact Form
 // Task4: Update Projects
-// Task5: Add Resume
+// Task5: Add Resume (reuse logic of Certifications to make it a pop up)
 // Task6: Update Skills into its own "Tab"
-// Task7: Update Certifications
-  // Add Certififcate Images
-  // Idea: when clicked position: absolute on the ceritificate
-    // Takes up most of the screen
-    // X on the top right
-    // Certificate Title on the top
 // Ex0: Make the "Nav Buttons" into a dropdown menu (when the screen gets small enough)
 // Ex1: Add Ruby to Skills
 // Ex2: Change Home -> About
-  // Add Icons for contacting here??? (probably not but just an idea?)
-  // I want to have the form be an option for contact
-// Ex3: Idea: Animate background image (project-item -> expanded)
-// Ex4: Update NavBar so that it updates when scrolling
+// Ex3: Update NavBar so that it updates when scrolling
 // Ex4: Fix Projects Smooth Scrolling
 // Note: I want to have all skills reflected in a project of some kind
   // Use ADHDHabitTracker to add firestore as a skill?
@@ -64,6 +56,14 @@ import UnityLogo from './images/skill-logos/Unity-logo.png';
 // Add "alt" field for images
 const projectsInfoTemp = [
   {index: 0,
+    name: "Mobile Mouse",
+    img: projectXimg,
+    desc: "PLACEHOLDER FOR ACCURACY app intended to help organize data for Brazilian missionaries "+
+    "\n-connects with AI API to automatically assign different categories of interest to the client",
+    github: "takes you to the github link",
+    link: "takes you to the website",
+    status: "Status"},
+  {index: 1,
     name: "Mission Field UI",
     // img: './images/placeholder.png',
     img: MissionFieldUIimg,
@@ -72,7 +72,7 @@ const projectsInfoTemp = [
     github: "https://github.com/Multimodal-Social-Analysis/Mission-Field-Organizer/tree/main/myapp",
     link: "https://multimodal-social-analysis.github.io/website-overview/",
     status: "Completed"},
-  {index: 1,
+  {index: 2,
     name: "ADHD Habit Tracker",
     img: projectXimg,
     desc: "PLACEHOLDER FOR ACCURACY app intended to help organize data for Brazilian missionaries "+
@@ -80,29 +80,21 @@ const projectsInfoTemp = [
     github: "https://github.com/Antonio-Sepulveda/adhd-habit-tracker?tab=readme-ov-file",
     link: "https://antonio-sepulveda.github.io/adhd-habit-tracker/",
     status: "Status"},
-  {index: 2,
-    name: "Mobile Mouse",
-    img: projectXimg,
-    desc: "PLACEHOLDER FOR ACCURACY app intended to help organize data for Brazilian missionaries "+
-    "\n-connects with AI API to automatically assign different categories of interest to the client",
-    github: "takes you to the github link",
-    link: "takes you to the website",
-    status: "Status"},
-  {index: 3,
-    name: "Man w/ a Stick",
-    img: projectXimg,
-    desc: "PLACEHOLDER FOR ACCURACY app intended to help organize data for Brazilian missionaries "+
-    "\n-connects with AI API to automatically assign different categories of interest to the client",
-    github: "takes you to the github link",
-    link: "takes you to the website",
-    status: "Status"},
-  {index: 4,
-    name: "title of project",
-    img: "img",
-    desc: "brief description of the project",
-    github: "takes you to the github link",
-    link: "takes you to the website",
-    status: "Status"},
+  // {index: 3,
+  //   name: "Man w/ a Stick",
+  //   img: projectXimg,
+  //   desc: "PLACEHOLDER FOR ACCURACY app intended to help organize data for Brazilian missionaries "+
+  //   "\n-connects with AI API to automatically assign different categories of interest to the client",
+  //   github: "takes you to the github link",
+  //   link: "takes you to the website",
+  //   status: "Status"},
+  // {index: 4,
+  //   name: "title of project",
+  //   img: "img",
+  //   desc: "brief description of the project",
+  //   github: "takes you to the github link",
+  //   link: "takes you to the website",
+  //   status: "Status"},
 ]
 
 const certificationsInfo = 
@@ -230,7 +222,8 @@ const Home = ({setContent, active}) => {
 }
 
 const Projects = ({content, setContent, active}) => {
-  const [openProjects, setOpenProjects] = useState([0,0,0,0,0]);
+  // const [openProjects, setOpenProjects] = useState([0,0,0,0,0]);
+  const [openProjects, setOpenProjects] = useState([0,0,0]);
 
   const toggleProject = (index, toggle) => {
     if (toggle === "open") {
@@ -279,8 +272,29 @@ const Projects = ({content, setContent, active}) => {
             <img src={projectsInfoTemp[index].img} className="item-img-expanded"></img>
             <p className="item-description">{projectsInfoTemp[index].desc}</p>
             <div className="item-links">
-              <button>{projectsInfoTemp[index].github}</button>
-              <button>{projectsInfoTemp[index].link}</button>
+              {/* <button className="project-github">{projectsInfoTemp[index].github}</button> */}
+              {/* <button className="something">
+                <img src={github} className="project-github"></img>
+                <div className="contact-profiles-img-separator"></div>
+                <p className="contact-profiles-img-label">GitHub</p>
+              </button> */}
+              <a href={projectsInfoTemp[index].github} 
+                target="_blank" className="click-link">
+                <button className="item-link-img-btn-github">
+                  <img src={github} className="item-link-img-github"></img>
+                  <div className="item-link-img-separator"></div>
+                  <p className="item-link-img-label">Github</p>
+                </button>
+              </a>
+              <a href={projectsInfoTemp[index].link} target="_blank"
+                className="click-link">
+                <button className="item-link-img-btn-github">
+                  {/* <img src={linkedin} className="item-link-img-github"></img> */}
+                  <AiOutlineLink className="item-link-img-link"></AiOutlineLink>
+                  <div className="item-link-img-separator"></div>
+                  <p className="item-link-img-label">Link</p>
+                </button>
+              </a>
             </div>
             <span className={projectsInfoTemp[index].status}>{projectsInfoTemp[index].status}</span>
           </div>
@@ -306,11 +320,12 @@ const Projects = ({content, setContent, active}) => {
       {/* <NavBar setContent={setContent} active={active}></NavBar> */}
       {/* <p>You are in the Projects Component</p> */}
       <div className='projects-grid'>
-        {renderProjectItem(0, "Mission Field UI")}
-        {renderProjectItem(1, "ADHD Habit Tracker")}
-        {renderProjectItem(2, "Mobile Mouse")}
-        {renderProjectItem(3, "Man w/ a Stick")}
-        {renderProjectItem(4, "Project 5")}
+        {renderProjectItem(0, "Mobile Mouse")}
+        {renderProjectItem(1, "Mission Field UI")}
+        {renderProjectItem(2, "ADHD Habit Tracker")}
+        {/* {renderProjectItem(2, "Mobile Mouse")} */}
+        {/* {renderProjectItem(3, "Man w/ a Stick")}
+        {renderProjectItem(4, "Project 5")} */}
       </div>
     </div>
   )
@@ -467,7 +482,7 @@ function App() {
         <Contact setContent={setContent} active={"Contact"}/> */}
         <Home/>
         <Projects content={content}/>
-        <Certifications setDisabled={setDisabled} setDisabledObj={setDisabledObj}/>
+        {/* <Certifications setDisabled={setDisabled} setDisabledObj={setDisabledObj}/> */}
         {/* <Contact/> */}
       </header>
     </div>
