@@ -9,8 +9,11 @@ import { AiOutlineLink } from "react-icons/ai";
 // Contact Images
 import github from './images/contact-images/github.png';
 import linkedin from './images/contact-images/linkedin.png';
+import me from "./images/me.jpeg";
 
 // Project Screenshots
+import MobileMouseGIF from './images/mobilemousevid.gif';
+import ADHDimg from './images/Screenshot 2025-09-17 123809.png';
 import projectXimg from './images/placeholder.png';
 import MissionFieldUIimg from './images/project-screenshots/MissionFieldUIScreenshot.jpeg';
 
@@ -42,9 +45,9 @@ import UnityLogo from './images/skill-logos/Unity-logo.png';
 // ✔Task1: Finish Projects Outline
 // ✔Task2: Get Certifications Working
 // ✔Task3: Contact Form
-// Task4: Update Projects
+// ✔Task4: Update Projects
 // Task5: Add Resume (reuse logic of Certifications to make it a pop up)
-// Task6: Update Skills into its own "Tab"
+// ✔Task6: Update Skills into its own "Tab"
 // Ex0: Make the "Nav Buttons" into a dropdown menu (when the screen gets small enough)
 // Ex1: Add Ruby to Skills
 // Ex2: Change Home -> About
@@ -57,44 +60,29 @@ import UnityLogo from './images/skill-logos/Unity-logo.png';
 const projectsInfoTemp = [
   {index: 0,
     name: "Mobile Mouse",
-    img: projectXimg,
-    desc: "PLACEHOLDER FOR ACCURACY app intended to help organize data for Brazilian missionaries "+
-    "\n-connects with AI API to automatically assign different categories of interest to the client",
-    github: "takes you to the github link",
-    link: "takes you to the website",
-    status: "Status"},
+    img: MobileMouseGIF,
+    desc: "ExpoGO app that turns your smartphone into a wireless trackpad for your PC, using WebSocket communication over a shared Wi-Fi network. "+
+    "\nA Python script on the PC generates a QR code for quick pairing, enabling real-time input without manual setup or additional hardware.",
+    github: "https://github.com/Antonio-Sepulveda/mobile-mouse",
+    link: "https://expo.dev/preview/update?message=&updateRuntimeVersion=1.0.0&createdAt=2025-09-15T14%3A57%3A32.159Z&slug=exp&projectId=64f51f70-4bad-4bde-b98c-8df106deaed2&group=95881bc9-04a8-40b3-880f-5a8cf96775af",
+    status: "Completed"},
   {index: 1,
     name: "Mission Field UI",
     // img: './images/placeholder.png',
     img: MissionFieldUIimg,
-    desc: "-app intended to help organize data for Brazilian missionaries "+
-    "\n-connects with AI API to automatically assign different categories of interest to the client",
+    desc: "Proof-of-concept web app designed to help Brazilian missionaries organize and manage their data more efficiently. "+
+    "\nIt integrates with an AI API to automatically categorize files based on content, streamlining data organization and aligning with the specific interests of the client.",
     github: "https://github.com/Multimodal-Social-Analysis/Mission-Field-Organizer/tree/main/myapp",
     link: "https://multimodal-social-analysis.github.io/website-overview/",
     status: "Completed"},
   {index: 2,
     name: "ADHD Habit Tracker",
-    img: projectXimg,
-    desc: "PLACEHOLDER FOR ACCURACY app intended to help organize data for Brazilian missionaries "+
-    "\n-connects with AI API to automatically assign different categories of interest to the client",
-    github: "https://github.com/Antonio-Sepulveda/adhd-habit-tracker?tab=readme-ov-file",
+    img: ADHDimg,
+    desc: "An app designed to support individuals with ADHD by addressing three common challenges: maintaining focus, remembering to eat and stay hydrated, and establishing healthier sleep habits. "+
+    "\n*(Migrating development to Flutter)*",
+    github: "https://github.com/Antonio-Sepulveda/adhd-habit-tracker",
     link: "https://antonio-sepulveda.github.io/adhd-habit-tracker/",
-    status: "Status"},
-  // {index: 3,
-  //   name: "Man w/ a Stick",
-  //   img: projectXimg,
-  //   desc: "PLACEHOLDER FOR ACCURACY app intended to help organize data for Brazilian missionaries "+
-  //   "\n-connects with AI API to automatically assign different categories of interest to the client",
-  //   github: "takes you to the github link",
-  //   link: "takes you to the website",
-  //   status: "Status"},
-  // {index: 4,
-  //   name: "title of project",
-  //   img: "img",
-  //   desc: "brief description of the project",
-  //   github: "takes you to the github link",
-  //   link: "takes you to the website",
-  //   status: "Status"},
+    status: "Current"},
 ]
 
 const certificationsInfo = 
@@ -103,8 +91,16 @@ const certificationsInfo =
     freeCodeCamp: [projectXimg, projectXimg, projectXimg]
   }
 
-const NavBar = ({setContent, active}) => {
-  console.log(active);
+const NavBar = ({setContent, active, setDisabled, setDisabledObj}) => {
+  // console.log(active);
+  const expandCertificate = (img) => {
+    setDisabled(true);
+    setDisabledObj(img);
+    
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+  }
+
   return (
     <nav>
       {/* Home Nav Button */}
@@ -114,7 +110,7 @@ const NavBar = ({setContent, active}) => {
           window.scrollTo({top:0})
         }}
         className={active === "Home" ? "btn-active" : "btn"}>
-          <span className="btn-text">Home</span>
+          <span className="btn-text">About</span>
       </button>
 
       {/* Projects Nav Button */}
@@ -125,81 +121,104 @@ const NavBar = ({setContent, active}) => {
         className={active === "Projects" ? "btn-active" : "btn"}>
           <span className="btn-text">Projects</span>
       </button>
-      
-      {/* Certifications Nav Button */}
+
+      {/* Skills Nav Button */}
       <button onClick={() => {
-          setContent("Certifications")
-          document.getElementById("certifications-id")?.scrollIntoView();
+          setContent("Skills")
+          document.getElementById("skills-id")?.scrollIntoView();
         }}
-        className={active === "Certifications" ? "btn-active" : "btn"}>
-          <span className="btn-text">Certifications</span>
+        className={active === "Skills" ? "btn-active" : "btn"}>
+          <span className="btn-text">Skills</span>
       </button>
 
       {/* Contact Nav Button */}
-      {/* <button onClick={() => {
+      <button onClick={() => {
           setContent("Contact")
           document.getElementById("contact-id")?.scrollIntoView();
         }}
         className={active === "Contact" ? "btn-active" : "btn"}>
           <span className="btn-text">Contact</span>
-      </button> */}
+      </button>
       
-      <button onClick={() => alert("This takes you the resume")}
+      <button onClick={() =>
+      {
+        expandCertificate(certificationsInfo["openAvenue"][0]);
+        // return (<div className={status[statusIndex] === 0 ? 
+        //   "certificate-container" : "certificate-container-hidden"}>
+        //   {img.map((i)=>(
+        //     <button className="certificate-img-btn"
+        //     onClick={(e)=>expandCertificate(i)}>
+        //       <img src={i} className="certificate-img"></img>
+        //     </button>
+        //   ))}
+        // </div>)
+      }}
         className="btn">Resume</button>
     </nav>
   )
 }
 
 const Home = ({setContent, active}) => {
-  const addSkill = (img, imgLink) => {
-    return (
-      <div className="skill">
-        <a href={imgLink} target="_blank">
-          <img src={img} className="skill-img"></img>
-        </a>
-        <br></br>
-        {/* <p className="skill-label">{}</p> */}
-      </div>
-    )
-  }
+  // const addSkill = (img, imgLink) => {
+  //   return (
+  //     <div className="skill">
+  //       <a href={imgLink} target="_blank">
+  //         <img src={img} className="skill-img"></img>
+  //       </a>
+  //       <br></br>
+  //       {/* <p className="skill-label">{}</p> */}
+  //     </div>
+  //   )
+  // }
 
   return (
     <div className="home">
       {/* <h1 style={{margin: 0}}>Antonio Sepulveda</h1> */}
       <section id="home-id">
         <h1 style={{margin: 0}}>Antonio Sepulveda</h1>
+        {/* <h4 style={{margin: 0, paddingBottom: '1em'}}>Software Engineer</h4> */}
       </section>
       <h4 style={{margin: 0, paddingBottom: '1em'}}>Software Engineer</h4>
-      <p style={{maxWidth: '75vw', margin: 0, fontSize: '1em'}}>Hello, I am a software engineer with expertise in web development and design. 
-        I focus on creating practical, impactful applications that address real-world needs. 
-        I am passionate about building tools that enhance user experiences and contribute to positive change.
-      </p>
-      <div className="contact-profiles">
-        <button className="contact-profiles-img-btn-github">
-          <img src={github} className="contact-profiles-img-github"></img>
-          <div className="contact-profiles-img-separator"></div>
-          <p className="contact-profiles-img-label">GitHub</p>
-        </button>
-        <button className="contact-profiles-img-btn-linkedin">
-          <img src={linkedin} className="contact-profiles-img-linkedin"></img>
-          <div className="contact-profiles-img-separator"></div>
-          <p className="contact-profiles-img-label">LinkedIn</p>
-        </button>
-        {/* <br></br> */}
+      <div className="home-content">
+        <div className='me'>
+          <img src={me}></img>
+        </div>
+        <div>
+          <p style={{maxWidth: '75vw', margin: 0, fontSize: '0.75em'}}>
+            Hello, I’m a software engineer with a passion for web/mobile development and thoughtful design! Since my father's career was also within Computer Science, I grew up around various technologies over the years. My enthusiasm for the field originated from watching him work throughout my life. I am very excited to forge my own path moving forward, and develop applications and systems that help others!
+            <br></br>
+            <br></br>
+            I love creating practical, user-friendly applications that solve real-world problems. Whether it's helping someone stay organized, learn something new, or access tools more easily, my focus is always on building experiences that feel intuitive and make a meaningful impact.
+          </p>
+        </div>
+      </div>
+      {/* <div className="contact-profiles">
+        <a href={"https://github.com/Antonio-Sepulveda"} 
+          target="_blank" className="click-link">
+          <button className="contact-profiles-img-btn-github">
+            <img src={github} className="contact-profiles-img-github"></img>
+            <div className="contact-profiles-img-separator"></div>
+            <p className="contact-profiles-img-label">GitHub</p>
+          </button>
+        </a>
+        <a href={"https://www.linkedin.com/in/antonio-sepulveda-76b500383/"} 
+          target="_blank" className="click-link">
+          <button className="contact-profiles-img-btn-linkedin">
+            <img src={linkedin} className="contact-profiles-img-linkedin"></img>
+            <div className="contact-profiles-img-separator"></div>
+            <p className="contact-profiles-img-label">LinkedIn</p>
+          </button>
+        </a>
       </div>
       <div className="contact-phone">
         <AiFillPhone />
         <span>(616) 666-1689</span>
       </div>
       <div className="contact-email">
-        {/* <span>Email Icon</span> */}
-        {/* <AiTwotoneMail /> */}
         <AiFillMail />
         <span>antoniosepulvedainoa@outlook.com</span>
-      </div>
-      <h3 style={{marginTop: '2em'}}>Skills</h3>
-      {/* <br></br><br></br> */}
-      {/* <p>JS, HTML, CSS, ReactNative, Python</p> */}
+      </div> */}
+      {/* <h3 style={{marginTop: '2em'}}>Skills</h3>
       <div className="skill-container">
         {addSkill(JSLogo, "https://developer.mozilla.org/en-US/docs/Web/JavaScript")}
         {addSkill(HTMLLogo, "https://developer.mozilla.org/en-US/docs/Web/HTML")}
@@ -216,7 +235,7 @@ const Home = ({setContent, active}) => {
         {addSkill(FigmaLogo, "https://www.figma.com/")}
         {addSkill(GodotLogo, "https://godotengine.org/")}
         {addSkill(UnityLogo, "https://unity.com/")}
-      </div>
+      </div> */}
     </div>
   )
 }
@@ -389,38 +408,81 @@ const Certifications = ({setContent, active, setDisabled, setDisabledObj}) => {
   )
 }
 
+const Skills = ({setContent, active}) => {
+  const addSkill = (img, imgLink) => {
+    return (
+      <div className="skill">
+        <a href={imgLink} target="_blank">
+          <img src={img} className="skill-img"></img>
+        </a>
+        <br></br>
+        {/* <p className="skill-label">{}</p> */}
+      </div>
+    )
+  }
+
+  return (
+    <div className='skills'>
+      {/* <h3 style={{marginTop: '2em'}}>Skills</h3> */}
+      <section id="skills-id">
+        <h1>Skills</h1>
+      </section>
+      <div className="skill-container">
+        {addSkill(JSLogo, "https://developer.mozilla.org/en-US/docs/Web/JavaScript")}
+        {addSkill(HTMLLogo, "https://developer.mozilla.org/en-US/docs/Web/HTML")}
+        {addSkill(CSSLogo, "https://developer.mozilla.org/en-US/docs/Web/CSS")}
+        {addSkill(ReactLogo, "https://react.dev/")}
+        {addSkill(PythonLogo, "https://www.python.org/")}
+        {addSkill(CLogo, "https://www.geeksforgeeks.org/c-programming-language/")}
+        {addSkill(CSharpLogo, "https://www.geeksforgeeks.org/csharp-programming-language/")}
+        {addSkill(CPlusPLusLogo, "https://www.geeksforgeeks.org/c-plus-plus/")}
+        {addSkill(JavaLogo, "https://dev.java/learn/")}
+        {addSkill(AdaLogo, "https://www.adacore.com/about-ada")}
+        {addSkill(ClojureLogo, "https://clojure.org/")}
+        {addSkill(GitLogo, "https://git-scm.com/")}
+        {addSkill(FigmaLogo, "https://www.figma.com/")}
+        {addSkill(GodotLogo, "https://godotengine.org/")}
+        {addSkill(UnityLogo, "https://unity.com/")}
+      </div>
+    </div>
+  )
+}
+
 const Contact = ({setContent, active}) => {
   return (
     <div className="contact">
       <section id="contact-id">
         <h1>Contact</h1>
       </section>
-
-      <form>
-        {/* <label for="name">Name</label> */}
-        {/* <span className="contact-form-label">Name</span> */}
-        <input type="text" id="name" placeholder="Name" />
-
-        {/* <label for="email">Email</label> */}
-        {/* <span className="contact-form-label">Email</span> */}
-        <input type="email" id="email" placeholder="Email" />
-
-        {/* <span className="contact-form-label">Message</span> */}
-        {/* <input type="message" id="message" placeholder="Enter your message" /> */}
-        <textarea placeholder="Message"></textarea>
-
-        <button className="contact-submit-btn">Submit</button>
-      </form>
-
-      <p>Other Forms of Contact:</p>
-      <ul>
-        <li>Phone Number</li>
-        <li>Email Me Button</li>
-        <li>LinkedIN</li>
-        <li>Move this higher up?
-          (GitHub, LinkedIN)</li>
-      </ul>
-      {/* <p>Test</p> */}
+      <div className="contact-profiles">
+        <a href={"https://github.com/Antonio-Sepulveda"} 
+          target="_blank" className="click-link">
+          <button className="contact-profiles-img-btn-github">
+            <img src={github} className="contact-profiles-img-github"></img>
+            <div className="contact-profiles-img-separator"></div>
+            <p className="contact-profiles-img-label">GitHub</p>
+          </button>
+        </a>
+        <a href={"https://www.linkedin.com/in/antonio-sepulveda-76b500383/"} 
+          target="_blank" className="click-link">
+          <button className="contact-profiles-img-btn-linkedin">
+            <img src={linkedin} className="contact-profiles-img-linkedin"></img>
+            <div className="contact-profiles-img-separator"></div>
+            <p className="contact-profiles-img-label">LinkedIn</p>
+          </button>
+        </a>
+        {/* <br></br> */}
+      </div>
+      <div className="contact-phone">
+        <AiFillPhone />
+        <span>(616) 666-1689</span>
+      </div>
+      <div className="contact-email">
+        {/* <span>Email Icon</span> */}
+        {/* <AiTwotoneMail /> */}
+        <AiFillMail />
+        <span>antoniosepulvedainoa@outlook.com</span>
+      </div>
     </div>
   )
 }
@@ -454,36 +516,19 @@ function App() {
   const [content, setContent] = useState("Home");
   const [disabled, setDisabled] = useState(false);
   const [disabledObj, setDisabledObj] = useState(null);
-  
-  // let display;
-  // if (content === "Home") {
-  //   display = <Home setContent={setContent} active={"Home"}/>;
-  // }
-  // else if (content === "Projects") {
-  //   display = <Projects setContent={setContent} active={"Projects"}/>;
-  // }
-  // else if (content === "Certifications") {
-  //   display = <Certifications setContent={setContent} active={"Certifications"}/>;
-  // }
-  // else if (content === "Contact") {
-  //   display = <Contact setContent={setContent} active={"Contact"}/>;
-  // }
 
   return (
     <div className="gradient-background">
       <header className="App-header">
-        {/* {display} */}
         <DisabledUI disabled={disabled} setDisabled={setDisabled}
           disabledObj={disabledObj}></DisabledUI>
-        <NavBar setContent={setContent} active={content}></NavBar>
-        {/* <Home setContent={setContent} active={"Home"}/>
-        <Projects setContent={setContent} active={"Projects"}/>
-        <Certifications setContent={setContent} active={"Certifications"}/>
-        <Contact setContent={setContent} active={"Contact"}/> */}
+        <NavBar setContent={setContent} active={content}
+        setDisabled={setDisabled} setDisabledObj={setDisabledObj}></NavBar>
         <Home/>
         <Projects content={content}/>
-        {/* <Certifications setDisabled={setDisabled} setDisabledObj={setDisabledObj}/> */}
-        {/* <Contact/> */}
+        <Skills></Skills>
+        <Contact></Contact>
+        {/* <Certifications setDisabled={setDisabled} setDisabledObj={setDisabledObj}></Certifications> */}
       </header>
     </div>
   );
