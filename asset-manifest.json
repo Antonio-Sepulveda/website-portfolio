@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/website-portfolio/static/css/main.36bf85b1.css",
+    "main.js": "/website-portfolio/static/js/main.db4bad24.js",
+    "static/js/488.5b5a1683.chunk.js": "/website-portfolio/static/js/488.5b5a1683.chunk.js",
+    "static/media/mobilemousevid.gif": "/website-portfolio/static/media/mobilemousevid.98f1c16c23357a3b6b51.gif",
+    "static/media/me.jpeg": "/website-portfolio/static/media/me.d62adbdb566d2d62e7e9.jpeg",
+    "static/media/Unity-logo.png": "/website-portfolio/static/media/Unity-logo.b196c776e313b0a0c14f.png",
+    "static/media/CPlusPlus-logo.png": "/website-portfolio/static/media/CPlusPlus-logo.3ae3c17f8df6009ded37.png",
+    "static/media/Godot-logo.png": "/website-portfolio/static/media/Godot-logo.3c8068574e9c673c49cc.png",
+    "static/media/Java-logo.png": "/website-portfolio/static/media/Java-logo.00238129f809eba29b9a.png",
+    "static/media/Clojure-logo.png": "/website-portfolio/static/media/Clojure-logo.60d2607c91173c9130fd.png",
+    "static/media/Git-logo.png": "/website-portfolio/static/media/Git-logo.8dd3688bb1415872d423.png",
+    "static/media/Figma-logo.png": "/website-portfolio/static/media/Figma-logo.e72d5db8e8eef62e8d8c.png",
+    "static/media/MissionFieldUIScreenshot.jpeg": "/website-portfolio/static/media/MissionFieldUIScreenshot.d2487c80aca29beae631.jpeg",
+    "static/media/linkedin.png": "/website-portfolio/static/media/linkedin.db47051c7fc1a803ae6c.png",
+    "static/media/Screenshot 2025-09-17 123809.png": "/website-portfolio/static/media/Screenshot 2025-09-17 123809.47688c96e6da6148bb35.png",
+    "static/media/CSharp-logo.png": "/website-portfolio/static/media/CSharp-logo.d052315b85228639234a.png",
+    "static/media/React-logo.webp": "/website-portfolio/static/media/React-logo.6fbe2c099897f87d1c29.webp",
+    "static/media/CSS-logo.png": "/website-portfolio/static/media/CSS-logo.bd3382b0e87f0660ef5d.png",
+    "static/media/C-logo.png": "/website-portfolio/static/media/C-logo.bbbbbabc8c191bfb99bf.png",
+    "static/media/placeholder.png": "/website-portfolio/static/media/placeholder.35cad1d4e896c1dd6062.png",
+    "static/media/Python-logo.png": "/website-portfolio/static/media/Python-logo.3d7662efead008e2b806.png",
+    "static/media/Ada-logo.png": "/website-portfolio/static/media/Ada-logo.e6de3118da2386db4a3c.png",
+    "static/media/HTML-logo.png": "/website-portfolio/static/media/HTML-logo.433fda35ec3b24cb2a74.png",
+    "static/media/JavaScript-logo.png": "/website-portfolio/static/media/JavaScript-logo.266bd9fb2663dcc057b4.png",
+    "index.html": "/website-portfolio/index.html",
+    "main.36bf85b1.css.map": "/website-portfolio/static/css/main.36bf85b1.css.map",
+    "main.db4bad24.js.map": "/website-portfolio/static/js/main.db4bad24.js.map",
+    "488.5b5a1683.chunk.js.map": "/website-portfolio/static/js/488.5b5a1683.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.36bf85b1.css",
+    "static/js/main.db4bad24.js"
+  ]
+}
