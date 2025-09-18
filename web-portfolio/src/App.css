@@ -19,20 +19,26 @@ body, html {
   position: fixed;
   height: 100%;
   width: 100%;
-  /* top: 0; */
   left: 0;
   z-index: 100;
-  color: white;
+  /* color: white; */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  gap: 1em;
+  /* flex-direction: column; */
   /* overflow: hidden;
   pointer-events: all; */
 }
 
-.certificate-img-expanded {
-  font-size: 1em;
+.resume {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60vw;
+  /* height: 50%; */
+  /* font-size: 1em; */
   /* display: flex;
   align-items: center;
   justify-content: center; */
@@ -947,4 +953,14 @@ textarea {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.resume {
+  /* position: absolute; */
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  /* max-width: 10em; */
+  /* width: 50%;
+  height: 50%; */
 }

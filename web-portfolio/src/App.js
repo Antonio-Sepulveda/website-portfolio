@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Document, Page } from 'react-pdf';
 import { AiFillMail } from "react-icons/ai";
 import { AiFillPhone } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
@@ -10,6 +11,8 @@ import { AiOutlineLink } from "react-icons/ai";
 import github from './images/contact-images/github.png';
 import linkedin from './images/contact-images/linkedin.png';
 import me from "./images/me.jpeg";
+import resume from "./images/ResumeV3.png";
+import resumePDF from "./images/ResumeV3.pdf";
 
 // Project Screenshots
 import MobileMouseGIF from './images/mobilemousevid.gif';
@@ -34,6 +37,21 @@ import FigmaLogo from './images/skill-logos/Figma-logo.png';
 import GodotLogo from './images/skill-logos/Godot-logo.png';
 import UnityLogo from './images/skill-logos/Unity-logo.png';
 
+// function ViewResume() {
+//   const [numPages, setNumPages] = useState(null);
+
+//   return (
+//     <Document
+//       file="./images/ResumeV3.pdf" // path to your PDF in public folder
+//       onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+//     >
+//       {/* {Array.from(new Array(numPages), (_, index) => (
+//         <Page key={index} pageNumber={index + 1} />
+//       ))} */}
+//     </Document>
+//   );
+// }
+
 // const grid = document.querySelector(".projects-grid");
 // const { unwrapGrid, forceGridAnimation } = wrapGrid(grid);
 // forceGridAnimation();
@@ -46,7 +64,7 @@ import UnityLogo from './images/skill-logos/Unity-logo.png';
 // ✔Task2: Get Certifications Working
 // ✔Task3: Contact Form
 // ✔Task4: Update Projects
-// Task5: Add Resume (reuse logic of Certifications to make it a pop up)
+// ✔Task5: Add Resume (reuse logic of Certifications to make it a pop up)
 // ✔Task6: Update Skills into its own "Tab"
 // Ex0: Make the "Nav Buttons" into a dropdown menu (when the screen gets small enough)
 // Ex1: Add Ruby to Skills
@@ -142,7 +160,7 @@ const NavBar = ({setContent, active, setDisabled, setDisabledObj}) => {
       
       <button onClick={() =>
       {
-        expandCertificate(certificationsInfo["openAvenue"][0]);
+        expandCertificate(resume);
         // return (<div className={status[statusIndex] === 0 ? 
         //   "certificate-container" : "certificate-container-hidden"}>
         //   {img.map((i)=>(
@@ -504,8 +522,10 @@ const DisabledUI = ({disabled, setDisabled, disabledObj}) => {
         </button>
         {/* <p className="certification-img">{disabledObj}</p> */}
         
-        <img src={disabledObj} className="certificate-img-expanded"></img>
-       
+        <img src={disabledObj} className="resume"></img>
+        <a href={resumePDF} download="AntonioSepulvedaResume.pdf">
+          <button className='btn'>Download</button>
+        </a>
       </div> : null
     }
     </div>
@@ -519,6 +539,7 @@ function App() {
 
   return (
     <div className="gradient-background">
+      <title>Hello</title>
       <header className="App-header">
         <DisabledUI disabled={disabled} setDisabled={setDisabled}
           disabledObj={disabledObj}></DisabledUI>
