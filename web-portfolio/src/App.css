@@ -1,7 +1,6 @@
 body, html {
   font-family: Helvetica, sans-serif;
   background: linear-gradient(180deg,#000000,#686e70) repeat fixed;
-  /* background: linear-gradient(180deg,#2995b9,#38606d) repeat fixed; */
   scroll-behavior: smooth;
   overscroll-behavior: none;
   overflow-x: hidden;
@@ -16,34 +15,55 @@ body, html {
 } */
 
 .disable-overlay {
-  background: rgba(0, 0, 0, 75%);
+  /* background: rgba(0, 0, 0, 75%);
   position: fixed;
   height: 100%;
   width: 100%;
   left: 0;
   z-index: 100;
-  /* color: white; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1em; */
+  background: rgba(0, 0, 0, 0.75); /* fixed rgba format */
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   gap: 1em;
-  /* flex-direction: column; */
-  /* overflow: hidden;
-  pointer-events: all; */
 }
 
 .resume {
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
-  width: 60vw;
+  justify-content: center; */
+  /* width: 60vw; */
   /* height: 50%; */
   /* font-size: 1em; */
   /* display: flex;
   align-items: center;
   justify-content: center; */
   /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 90%;
+  max-height: 90%;
+  padding: 1em;
+
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  /* overflow: auto;*/
 }
 
 .disable-overlay-exit {
