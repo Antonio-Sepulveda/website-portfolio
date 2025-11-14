@@ -1,6 +1,7 @@
 body, html {
   font-family: Helvetica, sans-serif;
   background: linear-gradient(180deg,#000000,#686e70) repeat fixed;
+  /* background: linear-gradient(180deg,#2995b9,#38606d) repeat fixed; */
   scroll-behavior: smooth;
   overscroll-behavior: none;
   overflow-x: hidden;
