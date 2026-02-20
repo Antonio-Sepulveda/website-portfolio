@@ -1,12 +1,15 @@
 {
   "files": {
-    "main.css": "/website-portfolio/static/css/main.df09459e.css",
-    "main.js": "/website-portfolio/static/js/main.cecacc65.js",
-    "static/js/488.5b5a1683.chunk.js": "/website-portfolio/static/js/488.5b5a1683.chunk.js",
+    "main.css": "/website-portfolio/static/css/main.1a72e44a.css",
+    "main.js": "/website-portfolio/static/js/main.bde5e91e.js",
+    "static/js/488.e5a38c2e.chunk.js": "/website-portfolio/static/js/488.e5a38c2e.chunk.js",
     "static/media/mobilemousevid.gif": "/website-portfolio/static/media/mobilemousevid.98f1c16c23357a3b6b51.gif",
     "static/media/me.jpeg": "/website-portfolio/static/media/me.d62adbdb566d2d62e7e9.jpeg",
     "static/media/ResumeV3.png": "/website-portfolio/static/media/ResumeV3.903b044c936fc4993bc2.png",
+    "static/media/Flutter-logo.png": "/website-portfolio/static/media/Flutter-logo.e7e81da4c643b1024aa2.png",
     "static/media/Unity-logo.png": "/website-portfolio/static/media/Unity-logo.b196c776e313b0a0c14f.png",
+    "static/media/SQL-logo.png": "/website-portfolio/static/media/SQL-logo.85fb38d6773862e917f4.png",
+    "static/media/TypeScript-logo.png": "/website-portfolio/static/media/TypeScript-logo.6e1e0312f10160743f53.png",
     "static/media/CPlusPlus-logo.png": "/website-portfolio/static/media/CPlusPlus-logo.3ae3c17f8df6009ded37.png",
     "static/media/Godot-logo.png": "/website-portfolio/static/media/Godot-logo.3c8068574e9c673c49cc.png",
     "static/media/Java-logo.png": "/website-portfolio/static/media/Java-logo.00238129f809eba29b9a.png",
@@ -18,6 +21,7 @@
     "static/media/linkedin.png": "/website-portfolio/static/media/linkedin.db47051c7fc1a803ae6c.png",
     "static/media/Screenshot 2025-09-17 123809.png": "/website-portfolio/static/media/Screenshot 2025-09-17 123809.47688c96e6da6148bb35.png",
     "static/media/CSharp-logo.png": "/website-portfolio/static/media/CSharp-logo.d052315b85228639234a.png",
+    "static/media/Ruby-logo.png": "/website-portfolio/static/media/Ruby-logo.1b49688d8cb7b3ad5ce5.png",
     "static/media/React-logo.webp": "/website-portfolio/static/media/React-logo.6fbe2c099897f87d1c29.webp",
     "static/media/CSS-logo.png": "/website-portfolio/static/media/CSS-logo.bd3382b0e87f0660ef5d.png",
     "static/media/C-logo.png": "/website-portfolio/static/media/C-logo.bbbbbabc8c191bfb99bf.png",
@@ -27,12 +31,12 @@
     "static/media/HTML-logo.png": "/website-portfolio/static/media/HTML-logo.433fda35ec3b24cb2a74.png",
     "static/media/JavaScript-logo.png": "/website-portfolio/static/media/JavaScript-logo.266bd9fb2663dcc057b4.png",
     "index.html": "/website-portfolio/index.html",
-    "main.df09459e.css.map": "/website-portfolio/static/css/main.df09459e.css.map",
-    "main.cecacc65.js.map": "/website-portfolio/static/js/main.cecacc65.js.map",
-    "488.5b5a1683.chunk.js.map": "/website-portfolio/static/js/488.5b5a1683.chunk.js.map"
+    "main.1a72e44a.css.map": "/website-portfolio/static/css/main.1a72e44a.css.map",
+    "main.bde5e91e.js.map": "/website-portfolio/static/js/main.bde5e91e.js.map",
+    "488.e5a38c2e.chunk.js.map": "/website-portfolio/static/js/488.e5a38c2e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.df09459e.css",
-    "static/js/main.cecacc65.js"
+    "static/css/main.1a72e44a.css",
+    "static/js/main.bde5e91e.js"
   ]
 }
