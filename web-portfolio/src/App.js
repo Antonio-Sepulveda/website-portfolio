@@ -11,8 +11,8 @@ import { AiOutlineLink } from "react-icons/ai";
 import github from './images/contact-images/github.png';
 import linkedin from './images/contact-images/linkedin.png';
 import me from "./images/me.jpeg";
-import resume from "./images/ResumeV3.png";
-import resumePDF from "./images/ResumeV3.pdf";
+import resume from "./images/ResumeV3_3.png";
+import resumePDF from "./images/ResumeV3_3";
 
 // Project Screenshots
 import MobileMouseGIF from './images/mobilemousevid.gif';
@@ -582,7 +582,7 @@ const DisabledUI = ({disabled, setDisabled, disabledObj}) => {
         
         <img src={disabledObj} className="resume"></img>
         <a href={resumePDF} download="AntonioSepulvedaResume.pdf">
-          <button className='btn'>Download</button>
+          <button className='dl-btn'>Download</button>
         </a>
       </div> : null
     }

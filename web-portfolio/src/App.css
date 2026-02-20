@@ -12,9 +12,9 @@ body, html {
   /* 52494c */
   /* 2d5b6b */
   scroll-behavior: smooth;
-  overscroll-behavior: none;
+  /* overscroll-behavior: none; */
   overflow-x: hidden;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
 /* .gradient-background {
@@ -159,9 +159,6 @@ nav {
   z-index: 5;
 }
 
-/* After I commented out the width; now the button
-appears bigger when selected (might be a good idea for later)
- */
 .btn {
   /* width: 20vw; */
   background-color: transparent;
@@ -212,6 +209,34 @@ appears bigger when selected (might be a good idea for later)
   font-size: 0.75em;
   /* box-shadow: black 2px 1px 1px 0.75; */
   /* text-decoration: none; */
+}
+
+.dl-btn {
+  /* width: 20vw; */
+  background-color: transparent;
+  /* color: white; */
+  color: #ffffff;
+  border-radius: 0.5em;
+  border: 0.1em solid #ffffff;
+  margin: 0.4em;
+  padding: 0.5em;
+  font-size: 0.75em;
+  /* font-weight: bold; */
+  /* transition: background-color 0.2s ease; */
+  transition: all 0.2s ease;
+  /* box-shadow: black 2px 1px 1px 0.75; */
+  /* text-decoration: none; */
+}
+
+.dl-btn:hover {
+  cursor: pointer;
+  font-weight: bold;
+  border-color: black;
+  color: black;
+  background-color: white;
+  /* transition: border-bottom 0.1s ease; */
+  transition: all 0.1s ease;
+  transform: scale(1.1);
 }
 
 #home-id, #projects-id, #certifications-id, #contact-id, #skills-id {
