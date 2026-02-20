@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Document, Page } from 'react-pdf';
 import { AiFillMail } from "react-icons/ai";
@@ -22,10 +22,14 @@ import MissionFieldUIimg from './images/project-screenshots/MissionFieldUIScreen
 
 // Skill Logos
 import JSLogo from './images/skill-logos/JavaScript-logo.png';
+import TSLogo from './images/skill-logos/TypeScript-logo.png';
 import HTMLLogo from './images/skill-logos/HTML-logo.png';
 import CSSLogo from './images/skill-logos/CSS-logo.png';
 import ReactLogo from './images/skill-logos/React-logo.webp';
 import PythonLogo from './images/skill-logos/Python-logo.png';
+import FlutterLogo from './images/skill-logos/Flutter-logo.png';
+import RubyLogo from './images/skill-logos/Ruby-logo.png';
+import SQLLogo from './images/skill-logos/SQL-logo.png';
 import CLogo from './images/skill-logos/C-logo.png';
 import CSharpLogo from './images/skill-logos/CSharp-logo.png';
 import CPlusPLusLogo from './images/skill-logos/CPlusPlus-logo.png';
@@ -101,6 +105,14 @@ const projectsInfoTemp = [
     github: "https://github.com/Antonio-Sepulveda/adhd-habit-tracker",
     link: "https://antonio-sepulveda.github.io/adhd-habit-tracker/",
     status: "Current"},
+  // {index: 3,
+  //   name: "Flutter Projects",
+  //   img: projectXimg,
+  //   desc: "An app designed to support individuals with ADHD by addressing three common challenges: maintaining focus, remembering to eat and stay hydrated, and establishing healthier sleep habits. "+
+  //   "\n*(Migrating development to Flutter)*",
+  //   github: "https://github.com/Antonio-Sepulveda/adhd-habit-tracker",
+  //   link: "https://antonio-sepulveda.github.io/adhd-habit-tracker/",
+  //   status: "Current"},
 ]
 
 const certificationsInfo = 
@@ -110,7 +122,44 @@ const certificationsInfo =
   }
 
 const NavBar = ({setContent, active, setDisabled, setDisabledObj}) => {
-  // console.log(active);
+  const pauseScrollingRef = useRef(false);
+
+  useEffect(()=> {
+    const sections = 
+    document.querySelectorAll(".home, .projects, .skills, .contact");
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // console.log(pauseScrollingRef.current);
+        entries.forEach((entry) => {
+          if (entry.target.classList.contains("home") && entry.isIntersecting) {
+            !pauseScrollingRef.current && setContent("Home");
+          }
+          else if (entry.target.classList.contains("projects") && entry.isIntersecting) {
+            // setContent("Projects")
+            !pauseScrollingRef.current && setContent("Projects");
+          }
+          else if (entry.target.classList.contains("skills") && entry.isIntersecting) {
+            // setContent("Skills")
+            !pauseScrollingRef.current && setContent("Skills");
+          }
+          else if (entry.target.classList.contains("contact") && entry.isIntersecting) {
+            // setContent("Contact")
+            !pauseScrollingRef.current && setContent("Contact");
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+        rootMargin: "-80px 0px 0px 0px"
+      }
+    );
+
+    sections.forEach(section => observer.observe(section));
+
+    // return () => observer.disconnect();
+  }, [setContent]);
+
   const expandCertificate = (img) => {
     setDisabled(true);
     setDisabledObj(img);
@@ -123,9 +172,11 @@ const NavBar = ({setContent, active, setDisabled, setDisabledObj}) => {
     <nav>
       {/* Home Nav Button */}
       <button onClick={() => {
-          setContent("Home")
+          setContent("Home");
+          pauseScrollingRef.current = true;
           // document.getElementById("home-id")?.scrollIntoView();
           window.scrollTo({top:0})
+          setTimeout(()=>{pauseScrollingRef.current = false;}, 500);
         }}
         className={active === "Home" ? "btn-active" : "btn"}>
           <span className="btn-text">About</span>
@@ -134,7 +185,9 @@ const NavBar = ({setContent, active, setDisabled, setDisabledObj}) => {
       {/* Projects Nav Button */}
       <button onClick={() => {
           setContent("Projects")
+          pauseScrollingRef.current = true;
           document.getElementById("projects-id")?.scrollIntoView();
+          setTimeout(()=>{pauseScrollingRef.current = false;}, 500);
         }}
         className={active === "Projects" ? "btn-active" : "btn"}>
           <span className="btn-text">Projects</span>
@@ -143,7 +196,9 @@ const NavBar = ({setContent, active, setDisabled, setDisabledObj}) => {
       {/* Skills Nav Button */}
       <button onClick={() => {
           setContent("Skills")
+          pauseScrollingRef.current = true;
           document.getElementById("skills-id")?.scrollIntoView();
+          setTimeout(()=>{pauseScrollingRef.current = false;}, 500);
         }}
         className={active === "Skills" ? "btn-active" : "btn"}>
           <span className="btn-text">Skills</span>
@@ -152,7 +207,9 @@ const NavBar = ({setContent, active, setDisabled, setDisabledObj}) => {
       {/* Contact Nav Button */}
       <button onClick={() => {
           setContent("Contact")
+          pauseScrollingRef.current = true;
           document.getElementById("contact-id")?.scrollIntoView();
+          setTimeout(()=>{pauseScrollingRef.current = false;}, 500);
         }}
         className={active === "Contact" ? "btn-active" : "btn"}>
           <span className="btn-text">Contact</span>
@@ -161,15 +218,6 @@ const NavBar = ({setContent, active, setDisabled, setDisabledObj}) => {
       <button onClick={() =>
       {
         expandCertificate(resume);
-        // return (<div className={status[statusIndex] === 0 ? 
-        //   "certificate-container" : "certificate-container-hidden"}>
-        //   {img.map((i)=>(
-        //     <button className="certificate-img-btn"
-        //     onClick={(e)=>expandCertificate(i)}>
-        //       <img src={i} className="certificate-img"></img>
-        //     </button>
-        //   ))}
-        // </div>)
       }}
         className="btn">Resume</button>
     </nav>
@@ -193,16 +241,20 @@ const Home = ({setContent, active}) => {
     <div className="home">
       {/* <h1 style={{margin: 0}}>Antonio Sepulveda</h1> */}
       <section id="home-id">
-        <h1 style={{margin: 0}}>Antonio Sepulveda</h1>
+        {/* <h1 style={{margin: 0}}>Antonio Sepulveda</h1> */}
         {/* <h4 style={{margin: 0, paddingBottom: '1em'}}>Software Engineer</h4> */}
       </section>
-      <h4 style={{margin: 0, paddingBottom: '1em'}}>Software Engineer</h4>
       <div className="home-content">
         <div className='me'>
           <img src={me}></img>
         </div>
-        <div>
-          <p style={{maxWidth: '75vw', margin: 0, fontSize: '0.75em'}}>
+        <div className="about-text-container">
+          {/* <h1 style={{margin: 0, textAlign: "center"}}>Antonio Sepulveda</h1>
+          <h4 style={{margin: 0, paddingBottom: '1em', textAlign: "center"}}>Software Engineer</h4> */}
+          <p className="me-label">Antonio Sepulveda</p>
+          <p style={{fontSize: '0.5em', padding: 0, marginTop: 0, marginBottom: 10, textAlign: 'center', position: 'relative'}}>Software Engineer</p>
+          {/* <p>Antonio Sepulveda </p> */}
+          <p className="about-text">
             Hello, I’m a software engineer with a passion for web/mobile development and thoughtful design! Since my father's career was also within Computer Science, I grew up around various technologies over the years. My enthusiasm for the field originated from watching him work throughout my life. I am very excited to forge my own path moving forward, and develop applications and systems that help others!
             <br></br>
             <br></br>
@@ -260,6 +312,7 @@ const Home = ({setContent, active}) => {
 
 const Projects = ({content, setContent, active}) => {
   // const [openProjects, setOpenProjects] = useState([0,0,0,0,0]);
+  // const [openProjects, setOpenProjects] = useState([0,0,0,0]);
   const [openProjects, setOpenProjects] = useState([0,0,0]);
 
   const toggleProject = (index, toggle) => {
@@ -360,6 +413,7 @@ const Projects = ({content, setContent, active}) => {
         {renderProjectItem(0, "Mobile Mouse")}
         {renderProjectItem(1, "Mission Field UI")}
         {renderProjectItem(2, "ADHD Habit Tracker")}
+        {/* {renderProjectItem(3, "Flutter Projects")} */}
         {/* {renderProjectItem(2, "Mobile Mouse")} */}
         {/* {renderProjectItem(3, "Man w/ a Stick")}
         {renderProjectItem(4, "Project 5")} */}
@@ -447,10 +501,14 @@ const Skills = ({setContent, active}) => {
       </section>
       <div className="skill-container">
         {addSkill(JSLogo, "https://developer.mozilla.org/en-US/docs/Web/JavaScript")}
+        {addSkill(TSLogo, "https://www.typescriptlang.org/")}
         {addSkill(HTMLLogo, "https://developer.mozilla.org/en-US/docs/Web/HTML")}
         {addSkill(CSSLogo, "https://developer.mozilla.org/en-US/docs/Web/CSS")}
         {addSkill(ReactLogo, "https://react.dev/")}
         {addSkill(PythonLogo, "https://www.python.org/")}
+        {addSkill(FlutterLogo, "https://flutter.dev/")}
+        {addSkill(RubyLogo, "https://www.ruby-lang.org/en/")}
+        {addSkill(SQLLogo, "https://en.wikipedia.org/wiki/SQL")}        
         {addSkill(CLogo, "https://www.geeksforgeeks.org/c-programming-language/")}
         {addSkill(CSharpLogo, "https://www.geeksforgeeks.org/csharp-programming-language/")}
         {addSkill(CPlusPLusLogo, "https://www.geeksforgeeks.org/c-plus-plus/")}
@@ -532,14 +590,14 @@ const DisabledUI = ({disabled, setDisabled, disabledObj}) => {
   )
 }
 
-function App() {
+function App() {  
   const [content, setContent] = useState("Home");
   const [disabled, setDisabled] = useState(false);
   const [disabledObj, setDisabledObj] = useState(null);
 
   return (
     <div className="gradient-background">
-      <title>Hello</title>
+      {/* <title>Hello</title> */}
       <header className="App-header">
         <DisabledUI disabled={disabled} setDisabled={setDisabled}
           disabledObj={disabledObj}></DisabledUI>

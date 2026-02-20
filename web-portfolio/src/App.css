@@ -1,9 +1,20 @@
+* {
+  font-family: 'Monaco', monospace;
+  /* border: 1px solid red; */
+}
+
 body, html {
   font-family: Helvetica, sans-serif;
-  background: linear-gradient(180deg,#000000,#686e70) repeat fixed;
+  /* font-family: 'Monaco', monospace; */
+  /* background: linear-gradient(180deg,#000000,#686e70) repeat fixed; */
+  /* background: linear-gradient(180deg,#2995b9,#38606d) repeat fixed; */
+  background: linear-gradient(180deg,#52494c,#38606d) repeat fixed;
+  /* 52494c */
+  /* 2d5b6b */
   scroll-behavior: smooth;
   overscroll-behavior: none;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* .gradient-background {
@@ -38,7 +49,9 @@ body, html {
   align-items: center;
   justify-content: center;
   text-align: center;
+  flex-direction: column;
   gap: 1em;
+  
 }
 
 .resume {
@@ -52,12 +65,12 @@ body, html {
   align-items: center;
   justify-content: center; */
   /* border: 1px solid red; */
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 75vw;
+  max-height: 75vh;
   padding: 1em;
 
   background: white;
@@ -132,8 +145,13 @@ nav {
   /* background-color: #282c2d;
   border-radius: 0.5em;
   border-bottom: 1px solid black; */
-  background: linear-gradient(180deg,#000000,#686e70) repeat fixed;
+  /* background: linear-gradient(180deg,#000000,#686e70) repeat fixed; */
   /* background: linear-gradient(180deg,rgba(0,0,0,0.5),#686e70) repeat fixed; */
+  /* background-color: #52494c; */
+  background: linear-gradient(180deg,#52494c,#38606d) repeat fixed;
+  border-bottom: 2px solid rgba(128,128,128,0.5);
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -144,14 +162,13 @@ nav {
 /* After I commented out the width; now the button
 appears bigger when selected (might be a good idea for later)
  */
- .btn {
+.btn {
   /* width: 20vw; */
   background-color: transparent;
   /* color: white; */
   color: #ffffff;
   border: 0;
-  /* border-bottom: 0.01em solid white; */
-  border-bottom: 0.01em solid #ffffff;
+  /* border-bottom: 0.01em solid #ffffff; */
   margin: 0.4em;
   padding: 0.5em;
   font-size: 0.75em;
@@ -163,13 +180,10 @@ appears bigger when selected (might be a good idea for later)
 }
 
 .btn:hover {
-  /* background-color: aliceblue; */
-  /* background-color: white; */
-  /* color: #252f32; */
   cursor: pointer;
-  /* border-bottom: 0.2em solid white; */
-  border-bottom: 0.2em solid #ffffff;
-  transition: border-bottom 0.1s ease;
+  font-weight: bold;
+  /* transition: border-bottom 0.1s ease; */
+  transition: all 0.1s ease;
 }
 
 .btn-active {
@@ -177,9 +191,21 @@ appears bigger when selected (might be a good idea for later)
   border: 1px solid #252f32;
   border-radius: 0.5em; */
   background-color: transparent;
-  color: rgb(0, 192, 128);
+  /* color: rgb(0, 192, 128); */
+  /* color: white; */
+  color: #6eadff;
+  /* color: #c47a53; */
+
+  transition: all 0.1s ease;
+  font-weight: bold;
   border: 0;
-  border-bottom: 0.2em solid rgb(0, 192, 128);
+  /* border-color: rgb(0, 192, 128); */
+  /* background-color: rgb(0, 192, 128); */
+  /* background-color: #6eadff; */
+  border-radius: 1em;
+
+
+  /* border-bottom: 0.2em solid rgb(0, 192, 128); */
   cursor: pointer;
   margin: 0.4em;
   padding: 0.5em;
@@ -223,10 +249,97 @@ appears bigger when selected (might be a good idea for later)
   align-items: center;
   justify-content: center; */
   /* gap: 1em; */
+  /* border: 1px solid red; */
+  /* padding-left: 20%; */
+  /* padding-right: 20%; */
+  /* flex-direction: row; */
+  display: flex;
+  margin: 1em;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* flex-direction: row; */
+
+  /* border: 1px solid red; */
 }
 
 .home-content > * {
-  flex: 1;
+  /* flex: 1; */
+  /* border: 1px solid blue; */
+}
+
+.about-text-container {
+  /* border: 1px solid blue; */
+  width: 50%;
+  /* padding: 0; */
+  margin: 1em;
+  /* text-align: left; */
+  /* top: 10%; */
+  
+  /* display: flex;
+  align-items: center; */
+}
+
+.me-label {
+  padding: 0;
+  margin-bottom: 0;
+  text-align: center;
+  position: relative;
+  /* margin-top: -100px; */
+  /* color: red; */
+}
+
+@media (min-width: 85em) {
+  .skills {
+    width: 40%;
+  }
+}
+
+@media (max-width: 85em) {
+  .about-text-container {
+    /* margin-left: 5em;
+    margin-right: 5em; */
+    width: 80%;
+  }
+  .home-content {
+    /* background-color: red; */
+    /* display: flex; */
+    /* margin-top: 10em; */
+    width: 100%;
+    flex-direction: column;
+    /* grid-template-columns: repeat(2, min(12em)); */
+  }
+  .me-label {
+    margin-top: -10px;
+  }
+}
+
+
+.about-text {
+  /* display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; */
+  /* max-width: 50%; */
+  /* margin: 0; */
+  /* padding: 1em; */
+  font-size: 0.75em;
+  /* border: 1px solid red; */
+}
+
+@keyframes float {
+  0% {
+    /* transform: translateY(0); */
+    border: 5px solid white;
+  }
+  50% {
+    transform: translateY(-5px);
+    /* transform: scale(1.025); */
+    border: 10px solid white;
+  }
+  100% {
+    border: 5px solid white;
+  }
 }
 
 .me {
@@ -235,17 +348,29 @@ appears bigger when selected (might be a good idea for later)
   /* max-height: 2.5em; */
   -webkit-user-drag: none;
   padding-bottom: 1em;
+  margin-right: 1em;
+  /* transition: ease all 0.3s; */
+  /* animation: float 2s ease-in-out infinite; */
+  /* border: 1px solid white; */
+  /* border-radius: 5em; */
+  /* border: 1px solid white; */
   /* border: 1px solid white; */
   /* height: 100%; */
 }
 
+/* .me:hover {
+  transform: scale(1.1);
+  transition: ease all 0.3s;
+} */
+
 .me > img {
   /* max-height: 2.5em; */
   border-radius: 5em;
+  border: 10px solid white;
   height: 15em;
   -webkit-user-drag: none;
   filter: drop-shadow(0.5em 0.5em 2px rgba(0,0,0,0.3));
-  
+  /* animation: float 1.5s ease-in-out infinite; */
 }
 
 .contact-profiles {
@@ -467,8 +592,8 @@ appears bigger when selected (might be a good idea for later)
 }
 
 .projects-item-expanded {
-  /* grid-column: span 2; */
   border: 0.2em solid rgb(0, 192, 128);
+  border: 0.2em solid #6eadff;
   height: auto;
   width: 13em;
   /* width: 100%; */
@@ -573,6 +698,7 @@ appears bigger when selected (might be a good idea for later)
 
 .item-container:hover {
   border-color: rgb(0, 192, 128);
+  border-color: #6eadff;
 }
 
 .item-container:hover .item-img {
@@ -581,9 +707,8 @@ appears bigger when selected (might be a good idea for later)
 }
 
 .item-container:hover .item-label {
-  /* opacity: 0; */
-  /* transition: opacity 0.2s ease-in-out; */
   color: rgb(0, 192, 128);
+  color: #6eadff;
   /* color: transparent; */
   /* font-size: 0em; */
   transition: all 0.2s ease-in-out;
@@ -784,7 +909,7 @@ appears bigger when selected (might be a good idea for later)
   flex-direction: column;
   align-items: center;
   padding-top: 2.5em;
-  margin-bottom: 5em;
+  /* margin-bottom: 5em; */
   /* margin-bottom: 1em; */
   /* border: 1px solid blue; */
 }
@@ -879,6 +1004,7 @@ legend {
   color: #ffffff;
   /* padding: 0; */
   margin-bottom: 3em;
+  /* margin-top: 3em; */
   /* border: 1px solid red; */
   
 }
@@ -974,6 +1100,9 @@ textarea {
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-top: 3em;
+  margin-bottom: 3em;
+  /* width: 40%; */
 }
 
 .resume {
